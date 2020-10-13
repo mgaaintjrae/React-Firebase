@@ -48,6 +48,7 @@ export default function useForm(initialState, validate, next) {
         handleSubmit,
         handleKeyDown,
         handleChange,
-        values
+        values,
+        errors
     }
 }

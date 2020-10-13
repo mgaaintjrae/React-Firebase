@@ -1,10 +1,12 @@
+import { areIntervalsOverlappingWithOptions } from "date-fns/fp";
 import React from "react";
 
 export default function MessageForm({
   handleSubmit,
   handleKeyDown,
   handleChange,
-  values
+  values,
+  errors,
 }) {
   return (
     <form onSubmit={handleSubmit} className="message-form-container">
@@ -24,9 +26,17 @@ export default function MessageForm({
           placeholder="Quoi de neuf ?"
         />
       </div>
+
+      {errors.message && <p className="error-text">{errors.message}</p>}
+
       <footer>
         <p>{280 - values.message.length}</p>
-        <button type="submit" disabled={values.message.length > 280 || values.message.length === 0}>Tweeter</button>
+        <button
+          type="submit"
+          disabled={values.message.length > 280 || values.message.length === 0}
+        >
+          Tweeter
+        </button>
       </footer>
     </form>
   );
