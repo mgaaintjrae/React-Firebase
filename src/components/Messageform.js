@@ -1,4 +1,3 @@
-import { areIntervalsOverlappingWithOptions } from "date-fns/fp";
 import React from "react";
 
 export default function MessageForm({
@@ -7,13 +6,14 @@ export default function MessageForm({
   handleChange,
   values,
   errors,
+  user
 }) {
   return (
     <form onSubmit={handleSubmit} className="message-form-container">
       <div className="message-form">
         <div>
           <img
-            src="https://avatars0.githubusercontent.com/u/49270171?s=460&u=b97ff4e2e67d73f4238d733e6973b26cf2eae63b&v=4"
+            src={user.photoURL}
             alt="Profil"
             className="profil-picture"
           />

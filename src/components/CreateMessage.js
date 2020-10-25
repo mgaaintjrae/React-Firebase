@@ -1,43 +1,48 @@
-import React from "react";
+import React, { useContext } from "react";
+import { FirebaseContext } from "../firebase";
 import MessageForm from "./MessageForm";
 import useForm from "./../hooks/useForm";
-import validateMessage from './../utils/validateMessage';
+import validateMessage from "./../utils/validateMessage";
 
 const INITIAL_STATE = {
-  message: ""
+  message: "",
   //mail: ""
 };
 
 export default function CreateMessage() {
+  const { user, firebase } = useContext(FirebaseContext);
   const handleCreateMessage = () => {
     const { message } = values;
     const newMessage = {
       message,
       postedBy: {
-        id: "76",
-        name: "Priscilla Roy",
+        id: user.uid,
+        name: user.displayName,
       },
       likes: [],
       createAt: Date.now(),
-      photo:
-        "https://avatars0.githubusercontent.com/u/49270171?s=460&u=b97ff4e2e67d73f4238d733e6973b26cf2eae63b&v=4",
+      photo: user.photoURL
     };
-    console.log(newMessage);
+    //ajout du nouveau message dans la base de données
+    firebase.db.collection('message').add(newMessage)
   };
 
-  const { handleSubmit, handleKeyDown, handleChange, values, errors} = useForm(
+  const { handleSubmit, handleKeyDown, handleChange, values, errors } = useForm(
     INITIAL_STATE,
     validateMessage,
     handleCreateMessage
   );
 
   return (
-    <MessageForm
-      handleSubmit={handleSubmit}
-      handleKeyDown={handleKeyDown}
-      handleChange={handleChange}
-      values={values}
-      errors={errors}
-    />
+    user && (
+      <MessageForm
+        handleSubmit={handleSubmit}
+        handleKeyDown={handleKeyDown}
+        handleChange={handleChange}
+        values={values}
+        errors={errors}
+        user={user}
+      />
+    )
   );
 }
