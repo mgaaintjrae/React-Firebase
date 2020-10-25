@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FirebaseContext } from "../firebase";
 import MessageForm from "./MessageForm";
-import useForm from "./../hooks/useForm";
+import useForm from "../hooks/useForm";
 import validateMessage from "./../utils/validateMessage";
 
 const INITIAL_STATE = {
@@ -9,7 +9,7 @@ const INITIAL_STATE = {
   //mail: ""
 };
 
-export default function CreateMessage() {
+const CreateMessage = () => {
   const { user, firebase } = useContext(FirebaseContext);
   const handleCreateMessage = () => {
     const { message } = values;
@@ -46,3 +46,5 @@ export default function CreateMessage() {
     )
   );
 }
+
+export default CreateMessage

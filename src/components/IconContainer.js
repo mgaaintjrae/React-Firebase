@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function IconContainer( { children, color, count, isLike, ...props }) {
+const IconContainer = ( { children, color, count, isLike, ...props }) => {
     return (
         <div className={`icon-group ${isLike && 'icon-isLike'}`} {...props}>
             <div className={`icon-container icon-${color}`}>
@@ -10,3 +10,5 @@ export default function IconContainer( { children, color, count, isLike, ...prop
         </div>
     )
 }
+
+export default IconContainer

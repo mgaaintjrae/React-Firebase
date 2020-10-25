@@ -20,7 +20,7 @@ const Message = ({ message }) => {
       const isLike = message.likes.some((like) => like.likeBy.id === user.uid);
       setIsLike(isLike);
     }
-  }, []);
+  }, [user, message.likes]);
 
   const handleLike = () => {
     setIsLike((prevIsLike) => !prevIsLike);

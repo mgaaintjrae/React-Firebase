@@ -10,7 +10,7 @@ import MessageList from "../components/MessageList";
 
 const App = () => {
   const user = useAuth();
-  console.log(user);
+ 
   return (
     <FirebaseContext.Provider value={{ user, firebase }}>
       <div className="app">

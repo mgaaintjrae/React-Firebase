@@ -1,13 +1,13 @@
 import React from "react";
 
-export default function MessageForm({
+const MessageForm = ({
   handleSubmit,
   handleKeyDown,
   handleChange,
   values,
   errors,
   user
-}) {
+}) => {
   return (
     <form onSubmit={handleSubmit} className="message-form-container">
       <div className="message-form">
@@ -41,3 +41,5 @@ export default function MessageForm({
     </form>
   );
 }
+
+export default MessageForm
