@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FirebaseContext } from "../firebase";
 import MessageForm from "./MessageForm";
-import useForm from "../hooks/useForm";
+import useForm from "./../hooks/useForm";
 import validateMessage from "./../utils/validateMessage";
 
 const INITIAL_STATE = {
