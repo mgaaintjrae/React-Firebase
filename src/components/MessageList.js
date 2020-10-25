@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import FirebaseContext from "./../firebase/context";
+import Message from "./Message";
 
 const MessageList = () => {
   const { firebase } = useContext(FirebaseContext);
@@ -27,8 +28,8 @@ const MessageList = () => {
 
   return (
     <div>
-      {messages.map(({ id, message }) => (
-        <p key={id}>{message}</p>
+      {messages.map(message => (
+        <Message key={message.id} message={message} />
       ))}
     </div>
   );
